@@ -1,0 +1,15 @@
+.shopItem{
+    margin:0.5rem;
+    padding: 0.5rem;
+    height: 100px;
+    width: auto;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.shopItem:hover{
+    transform: scale(1.1);
+}
+.shopItem:active{
+    background-color: rgb(83, 17, 67);
+}
