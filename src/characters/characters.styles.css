@@ -2,6 +2,14 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    position: relative;
+    background-color: antiquewhite;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    justify-content: space-around;
+    border-radius: 0.5rem;
+    border: 1px solid black;
 }
 p{
     width: 100px;
@@ -12,21 +20,54 @@ p{
 }
 .stats{
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: gray;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+}
+.statsIcon{
+    width: 30px;
+    height: auto;
 }
 .hp{
     background-color: rgb(61, 193, 65);
 }
 .coins{
     background-color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+    padding: 2px;
+    width: 50%;
 }
 .potions{
     background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+    padding: 2px;
+    width: 50%;
 }
 .dmg{
     background-color: rgb(166, 16, 16);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+    padding: 2px;
+    width: 50%;
 }
 .name{
-    background-color: dimgray;
+    position: absolute;
+    top: 3rem;
+    left:1rem;
 }
 .enemyImg, .heroImg{
     width: auto;

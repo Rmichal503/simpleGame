@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './shop.styles.css'
 
 export const Shop = ({setPlayer,player,openShop}) => {
@@ -19,20 +19,29 @@ export const Shop = ({setPlayer,player,openShop}) => {
             return setPlayer({
                 ...player,
                 dmg: (player.dmg + typeOfSword),
-                coins: (player.coins - typeOfSword)
+                coins: (player.coins - 30)
             })
         }
         alert('masz za mało monet')
     }
     return (
         <>
-        <div>
-            <img className='shopItem' src="/assets/shop/sword-svgrepo-com.svg" alt="sword icon" onClick={()=>{
-                buySword(6)
-            }}/>
-            <img className='shopItem' src="/assets/shop/potion-svgrepo-com.svg" alt="potion icon" onClick={buyPotion}/>
+        <div className='grid'>
+            <div className='iconContainer'>
+                <img className='icons' src="/assets/shop/sword.svg" alt="sword icon" onClick={()=>{
+                    buySword(6)
+                }}/>
+                <span className='tooltip'>Sword +6 dmg</span>
+            </div>
+            <div className='iconContainer'>
+                <img className='icons' src="/assets/shop/potion.svg" alt="potion icon" onClick={buyPotion}/>
+                <span className='tooltip'>Potion +30HP</span>
+            </div>
         </div>
-        <button onClick={openShop}>Back to town</button>
+        <div className="iconContainer">
+            <img className='icons' onClick={openShop} src="/assets/locations/village.svg" alt="village" />
+            <span className='tooltip'>Back to town</span>
+        </div>
         </>
     )
 }

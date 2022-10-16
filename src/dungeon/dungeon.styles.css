@@ -1,0 +1,14 @@
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(67, 61, 61);
+    background-image: url('../../public/assets/backgrounds/brick-wall.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.buttonsContainer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,17 +1,21 @@
 import React from 'react'
+import { ProgressBar } from './progressBar/progressBar.component'
 
 export const Enemy = ({enemy}) => {
   
   return (
-    <div className='creature'>Enemy
+    <div className='creature'>
+      <ProgressBar bgcolor={'green'} min={enemy.hp} max={enemy.hpMax}/>
       <p className='name'>{enemy.enemyName}</p>
       <img className='enemyImg' src={enemy.imgSrc} alt={enemy.enemyName} />
         <div className="stats">
-          <p className='hp'>Zdrowie: {enemy.hp}</p>
-          <p className='coins'>Monet: {enemy.coins}</p>
-          <p className='potions'>Mikstur: {enemy.potions}</p>
+          <div className='coins'>
+              <img className='statsIcon' src="/assets/stats/coins.svg" alt="coins icon" />
+              <span>{enemy.coins}</span></div>
+            <div className='potions'>
+              <img className='statsIcon' src="/assets/shop/potion.svg" alt="potions icon" />
+              <span>{enemy.potions}</span></div>
         </div>
-        
     </div>
   )
 }

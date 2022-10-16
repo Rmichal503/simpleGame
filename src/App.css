@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{
+  font-family: 'Press Start 2P', cursive;
+}
 .App{
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../public/assets/backgrounds/village-background.svg');
+  background-color: rgb(67, 61, 61);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 .mainView{
   display: flex;
