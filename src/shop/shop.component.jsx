@@ -24,6 +24,16 @@ export const Shop = ({setPlayer,player,openShop}) => {
         }
         alert('masz za mało monet')
     }
+    const buyShield = (typeOfShield)=>{
+        if (player.coins >=10) {
+            return setPlayer({
+                ...player,
+                armor: (player.armor + typeOfShield),
+                coins: (player.coins - 10)
+            })
+        }
+        alert('masz za mało monet')
+    }
     return (
         <div className='shopBackground'>
             <div className='iconContainer'>
@@ -31,6 +41,12 @@ export const Shop = ({setPlayer,player,openShop}) => {
                     buySword(6)
                 }}/>
                 <span className='tooltip'>Sword +6 dmg</span>
+            </div>
+            <div className='iconContainer'>
+                <img className='icons' src="/assets/shop/shield.svg" alt="shield icon" onClick={()=>{
+                    buyShield(2)
+                }}/>
+                <span className='tooltip'>Shield +2 armor</span>
             </div>
             <div className='iconContainer'>
                 <img className='icons' src="/assets/shop/potion.svg" alt="potion icon" onClick={buyPotion}/>

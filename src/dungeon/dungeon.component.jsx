@@ -12,26 +12,29 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
         second:['Demon Pig','Vileserpent','Cavernspawn','Bladebeing','Lump','Plagueling','Hellcreep']
     }
     const dmgWithEnemy = ()=>{
+        if(!toggleEnemy){
+            return
+        }
         setEnemy({
             ...enemy,
             hp:(enemy.hp - player.dmg)
         });
         setPlayer({
             ...player,
-            hp:(player.hp - enemy.dmg)
+            hp:(player.hp + player.armor - enemy.dmg) > player.hp?player.hp:player.hp + player.armor - enemy.dmg
         });
         console.log(enemy,player)
         if((player.hp - enemy.dmg) <=0){
             console.log('przed',player.hp);
             window.confirm('Umrzałeś. Chcesz grać dalej?') &&
             setPlayer({
+                ...player,
                 playerName:`Zombie ${player.playerName}`,
                 hpMax: 100,
                 hp: 100,
                 dmg: 6,
                 coins: 30,
                 potions: 0,
-                imgSrc: "assets/hero.svg",
                 exp: 0,
                 expToLvl: 100,
                 lvl: 0,
@@ -46,6 +49,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
                 potions:(player.potions + enemy.potions),
                 exp:(player.exp + enemy.exp)
             });
+            alert(`You get ${enemy.coins} coins${enemy.potions >0?' and ' +enemy.potions + ' potions.' : ''}`)
             settoggleEnemy(0);
             //lvl up of hero
             if(player.exp + enemy.exp >player.expToLvl){
@@ -186,6 +190,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
                 <img className='icons' onClick={()=>{
                     if(!toggleEnemy){
                         generateEnemy();
+                        console.log(toggleEnemy)
                     }
                     settoggleEnemy(1)
                 }} src="/assets/hero.svg" alt="Search for enemy" />

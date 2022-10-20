@@ -5,8 +5,6 @@ export const Player = ({player}) => {
   return (
     <div className='creature'>
         <ProgressBar bgcolor={"green"} min={player.hp} max={player.hpMax}/>
-        <ProgressBar bgcolor={"gold"} min={player.exp} max={player.expToLvl}/>
-        <p className='name'>{player.playerName}</p>
         <img className='heroImg' src={player.imgSrc} alt={player.playerName} />
         <div className="stats">
           <div className='dmg'>

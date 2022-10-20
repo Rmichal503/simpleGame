@@ -14,6 +14,7 @@ function App() {
     hpMax: 100,
     hp: 100,
     dmg: 6,
+    armor:0,
     coins: 30,
     potions: 0,
     imgSrc: "assets/hero.svg",
