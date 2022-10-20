@@ -6,13 +6,38 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('../public/assets/backgrounds/village-background.svg');
-  background-color: rgb(67, 61, 61);
-  background-repeat: no-repeat;
-  background-size: 100%;
 }
 .mainView{
   display: flex;
   justify-content: space-around;
 }
-
+.nav{
+  background-color: #433d3d;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+.town{
+  height: calc(100% - 107px);
+  display: block;
+  background-image: url('../public/assets/backgrounds/village-background.svg');
+  background-color: rgb(67, 61, 61);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.playerStats {
+  margin: 0 1rem;
+  width: 30%;
+}
+.eq{
+  width:30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.eq>.coins, .eq>.potions {
+  width: 100px;
+  margin: 0.5rem;
+}

@@ -1,13 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Enemy } from '../characters/enemy.component';
 import { Player } from '../characters/player.component';
 import './dungeon.styles.css'
 
-export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
+export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEnemy}) => {
     function generateRandomIntegerInRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
+    const enemyNames = {
+        first:['The Crazy','The Lonely','The Dark','The Ancient','The Hungry','The Bloodthirsty','The Red-Eyed'],
+        second:['Demon Pig','Vileserpent','Cavernspawn','Bladebeing','Lump','Plagueling','Hellcreep']
+    }
     const dmgWithEnemy = ()=>{
         setEnemy({
             ...enemy,
@@ -23,11 +26,15 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
             window.confirm('Umrzałeś. Chcesz grać dalej?') &&
             setPlayer({
                 playerName:`Zombie ${player.playerName}`,
+                hpMax: 100,
                 hp: 100,
-                dmg:6,
-                coins:0,
-                potions:0,
-                imgSrc:'assets/hero.svg'
+                dmg: 6,
+                coins: 30,
+                potions: 0,
+                imgSrc: "assets/hero.svg",
+                exp: 0,
+                expToLvl: 100,
+                lvl: 0,
             })
             console.log('po promt',player.hp);
             return
@@ -38,7 +45,8 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
                 coins:(player.coins + enemy.coins),
                 potions:(player.potions + enemy.potions),
                 exp:(player.exp + enemy.exp)
-            })
+            });
+            settoggleEnemy(0);
             //lvl up of hero
             if(player.exp + enemy.exp >player.expToLvl){
                 switch (generateRandomIntegerInRange(0,1)) {
@@ -62,14 +70,12 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
                         break;
                 }
             }
-        generateEnemy();
         }
     }
         const generateEnemy =()=>{
             let hpAndHpMax;
             if(enemy.enemyCount === 10){
                 hpAndHpMax = generateRandomIntegerInRange(100,150);
-                //dokonczyc hp i hpmax
                 return setEnemy({
                     enemyName:'Minotaur',
                     hp:hpAndHpMax,
@@ -77,7 +83,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
                     dmg:generateRandomIntegerInRange(11,24),
                     coins:generateRandomIntegerInRange(21,35),
                     potions:generateRandomIntegerInRange(2,3),
-                    imgSrc:'/assets/enemies/minotaur.svg',
+                    imgSrc:Math.random(),
                     exp:generateRandomIntegerInRange(75,110),
                     enemyCount:enemy.enemyCount +1
                 })
@@ -86,13 +92,13 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
             case 1:
                 hpAndHpMax = generateRandomIntegerInRange(20,50)
             setEnemy({
-                enemyName:'zombie',
+                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
                 dmg:generateRandomIntegerInRange(1,4),
                 coins:generateRandomIntegerInRange(1,5),
                 potions:generateRandomIntegerInRange(0,1),
-                imgSrc:'/assets/enemies/zombie.svg',
+                imgSrc:Math.random(),
                 exp:generateRandomIntegerInRange(5,10),
                 enemyCount:enemy.enemyCount +1
             })
@@ -100,13 +106,13 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
             case 2:
             hpAndHpMax = generateRandomIntegerInRange(30,60)
             setEnemy({
-                enemyName:'green zombie',
+                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
                 dmg:generateRandomIntegerInRange(2,5),
                 coins:generateRandomIntegerInRange(2,6),
                 potions:generateRandomIntegerInRange(0,1),
-                imgSrc:'assets/enemies/green_zombie.svg',
+                imgSrc:Math.random(),
                 exp:generateRandomIntegerInRange(10,20),
                 enemyCount:enemy.enemyCount +1
             })
@@ -114,13 +120,13 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
             case 3:
             hpAndHpMax = generateRandomIntegerInRange(40,70)
             setEnemy({
-                enemyName:'skeleton',
+                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
                 dmg:generateRandomIntegerInRange(3,7),
                 coins:generateRandomIntegerInRange(4,8),
                 potions:generateRandomIntegerInRange(0,1),
-                imgSrc:'assets/enemies/skeleton.svg',
+                imgSrc:Math.random(),
                 exp:generateRandomIntegerInRange(20,25),
                 enemyCount:enemy.enemyCount +1
             })
@@ -128,13 +134,13 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
             case 4:
             hpAndHpMax = generateRandomIntegerInRange(50,80)
             setEnemy({
-                enemyName:'skeleton warior',
+                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
                 dmg:generateRandomIntegerInRange(4,8),
                 coins:generateRandomIntegerInRange(6,10),
                 potions:generateRandomIntegerInRange(0,1),
-                imgSrc:'assets/enemies/skeleton_warrior.svg',
+                imgSrc:Math.random(),
                 exp:generateRandomIntegerInRange(25,40),
                 enemyCount:enemy.enemyCount +1
             })
@@ -165,7 +171,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
     <div className='background'>
         <div className="mainView">
             <Player player={player}/>
-            <Enemy enemy={enemy}/>
+            {toggleEnemy?(<Enemy enemy={enemy}/>):(null)}
         </div>
         <div className='buttonsContainer'>
             <div className="iconContainer">
@@ -177,9 +183,15 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,openDungeon}) => {
                 <span className='tooltip'>Use potion</span>
             </div>
             <div className="iconContainer">
-                <img className='icons' onClick={openDungeon} src="/assets/locations/village.svg" alt="back to town" />
-                <span className='tooltip'>Back to town</span>
+                <img className='icons' onClick={()=>{
+                    if(!toggleEnemy){
+                        generateEnemy();
+                    }
+                    settoggleEnemy(1)
+                }} src="/assets/hero.svg" alt="Search for enemy" />
+                <span className='tooltip'>Search for enemy</span>
             </div>
+
         </div>
     </div>
   )

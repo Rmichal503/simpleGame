@@ -25,8 +25,7 @@ export const Shop = ({setPlayer,player,openShop}) => {
         alert('masz za mało monet')
     }
     return (
-        <>
-        <div className='grid'>
+        <div className='shopBackground'>
             <div className='iconContainer'>
                 <img className='icons' src="/assets/shop/sword.svg" alt="sword icon" onClick={()=>{
                     buySword(6)
@@ -38,10 +37,5 @@ export const Shop = ({setPlayer,player,openShop}) => {
                 <span className='tooltip'>Potion +30HP</span>
             </div>
         </div>
-        <div className="iconContainer">
-            <img className='icons' onClick={openShop} src="/assets/locations/village.svg" alt="village" />
-            <span className='tooltip'>Back to town</span>
-        </div>
-        </>
     )
 }

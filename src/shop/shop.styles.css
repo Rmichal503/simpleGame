@@ -1,7 +1,7 @@
 .icons{
     margin:0.5rem;
     padding: 0.5rem;
-    height: 100px;
+    height: 70px;
     width: auto;
     border: 2px solid black;
     cursor: pointer;
@@ -17,11 +17,15 @@
 .icons:active{
     background-color: rgb(83, 17, 67);
 }
-.grid{
-    width: 408px;
-    height: auto;
+.shopBackground{
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
+    background-image: url('/public/assets/backgrounds/shop.svg');
+    background-color: rgb(67, 61, 61);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .tooltip{
     top: 100%;
@@ -33,8 +37,12 @@
     border-radius: 0.5rem;
     padding: 3px;
     border: 1px solid black;
-    width: 100%;
+    width: fit-content;
 }
 .iconContainer{
     position: relative;
+}
+.iconContainer:visited{
+    color: inherit;
+    text-decoration: none;
 }

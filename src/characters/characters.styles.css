@@ -71,6 +71,6 @@ p{
 }
 .enemyImg, .heroImg{
     width: auto;
-    height: 400px;
+    height: 300px;
     max-width: 300px;
 }
