@@ -20,12 +20,18 @@
 .shopBackground{
     width: 100%;
     height: 100%;
-    display: flex;
     background-image: url('/public/assets/backgrounds/shop.svg');
     background-color: rgb(67, 61, 61);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+.stall{
+    width: 100%;
+    height: fit-content;
+    max-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .tooltip{
     top: 100%;
@@ -41,8 +47,12 @@
 }
 .iconContainer{
     position: relative;
+    height: fit-content;
 }
 .iconContainer:visited{
     color: inherit;
     text-decoration: none;
+}
+.bought{
+    display: none;
 }

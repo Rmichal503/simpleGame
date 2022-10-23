@@ -8,21 +8,6 @@ import {
 } from "react-router-dom";
 
 
-// const router = createBrowserRouter([
-//   {
-//     path:'/',
-//     element: <App/>
-//   },
-//   {
-//     path:'shop',
-//     element: <Shop/>
-//   },
-//   {
-//     path:'dungeone',
-//     element:<Dungeon/>
-//   }
-// ])
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

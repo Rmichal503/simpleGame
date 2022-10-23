@@ -3,7 +3,7 @@ import { Enemy } from '../characters/enemy.component';
 import { Player } from '../characters/player.component';
 import './dungeon.styles.css'
 
-export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEnemy}) => {
+export const Dungeon = ({player,setPlayer,toggleEnemy,settoggleEnemy}) => {
     function generateRandomIntegerInRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -11,17 +11,34 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
         first:['The Crazy','The Lonely','The Dark','The Ancient','The Hungry','The Bloodthirsty','The Red-Eyed'],
         second:['Demon Pig','Vileserpent','Cavernspawn','Bladebeing','Lump','Plagueling','Hellcreep']
     }
+    const randomNames =()=>{
+        return `${enemyNames.first[generateRandomIntegerInRange(0,(enemyNames.first.length-1))]} ${enemyNames.second[generateRandomIntegerInRange(0,(enemyNames.second.length-1))]}`
+    }
+    const [enemy, setEnemy] = useState({
+        enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,(enemyNames.first.length-1))]} ${enemyNames.second[generateRandomIntegerInRange(0,(enemyNames.second.length-1))]}`,
+        hp: 10,
+        hpMax: 10,
+        dmg: 3,
+        coins: generateRandomIntegerInRange(3, 8),
+        potions: 0,
+        exp: 5,
+        imgSrc:'/assets/enemies/blob.svg',
+        enemyCount: 0,
+    });
+    const randomStatsByPlayerLvl = (min,max)=>{
+        return Math.floor(generateRandomIntegerInRange(min,max)* (1+(player.lvl/10)))
+    }
     const dmgWithEnemy = ()=>{
         if(!toggleEnemy){
             return
         }
-        setEnemy({
-            ...enemy,
-            hp:(enemy.hp - player.dmg)
+        setEnemy(prevEnemy=>{
+            return {...prevEnemy,
+            hp: prevEnemy.hp - player.dmg}
         });
-        setPlayer({
-            ...player,
-            hp:(player.hp + player.armor - enemy.dmg) > player.hp?player.hp:player.hp + player.armor - enemy.dmg
+        setPlayer(prevPlayer=>{
+            return {...prevPlayer,
+            hp:(prevPlayer.hp - (enemy.dmg-prevPlayer.armor)) > prevPlayer.hp?prevPlayer.hp:prevPlayer.hp - (enemy.dmg-prevPlayer.armor)}
         });
         console.log(enemy,player)
         if((player.hp - enemy.dmg) <=0){
@@ -79,82 +96,82 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
         const generateEnemy =()=>{
             let hpAndHpMax;
             if(enemy.enemyCount === 10){
-                hpAndHpMax = generateRandomIntegerInRange(100,150);
+                hpAndHpMax = randomStatsByPlayerLvl(100,150);
                 return setEnemy({
                     enemyName:'Minotaur',
                     hp:hpAndHpMax,
                     hpMax:hpAndHpMax,
-                    dmg:generateRandomIntegerInRange(11,24),
-                    coins:generateRandomIntegerInRange(21,35),
-                    potions:generateRandomIntegerInRange(2,3),
+                    dmg:randomStatsByPlayerLvl(11,14),
+                    coins:randomStatsByPlayerLvl(21,35),
+                    potions:randomStatsByPlayerLvl(2,3),
                     imgSrc:Math.random(),
-                    exp:generateRandomIntegerInRange(75,110),
-                    enemyCount:enemy.enemyCount +1
+                    exp:randomStatsByPlayerLvl(75,110),
+                    enemyCount:0
                 })
             }
         switch (generateRandomIntegerInRange(1,4)) {
             case 1:
-                hpAndHpMax = generateRandomIntegerInRange(20,50)
+                hpAndHpMax = randomStatsByPlayerLvl(20,50);
             setEnemy({
-                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
+                enemyName:randomNames(),
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
-                dmg:generateRandomIntegerInRange(1,4),
-                coins:generateRandomIntegerInRange(1,5),
-                potions:generateRandomIntegerInRange(0,1),
+                dmg:randomStatsByPlayerLvl(1,4),
+                coins:randomStatsByPlayerLvl(1,5),
+                potions:randomStatsByPlayerLvl(0,1),
                 imgSrc:Math.random(),
-                exp:generateRandomIntegerInRange(5,10),
+                exp:randomStatsByPlayerLvl(5,10),
                 enemyCount:enemy.enemyCount +1
             })
             break;
             case 2:
-            hpAndHpMax = generateRandomIntegerInRange(30,60)
+            hpAndHpMax = randomStatsByPlayerLvl(30,60)
             setEnemy({
-                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
+                enemyName:randomNames(),                
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
-                dmg:generateRandomIntegerInRange(2,5),
-                coins:generateRandomIntegerInRange(2,6),
-                potions:generateRandomIntegerInRange(0,1),
+                dmg:randomStatsByPlayerLvl(2,5),
+                coins:randomStatsByPlayerLvl(2,6),
+                potions:randomStatsByPlayerLvl(0,1),
                 imgSrc:Math.random(),
-                exp:generateRandomIntegerInRange(10,20),
+                exp:randomStatsByPlayerLvl(10,20),
                 enemyCount:enemy.enemyCount +1
             })
             break;
             case 3:
-            hpAndHpMax = generateRandomIntegerInRange(40,70)
+            hpAndHpMax = randomStatsByPlayerLvl(40,70)
             setEnemy({
-                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
+                enemyName:randomNames(),           
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
-                dmg:generateRandomIntegerInRange(3,7),
-                coins:generateRandomIntegerInRange(4,8),
-                potions:generateRandomIntegerInRange(0,1),
+                dmg:randomStatsByPlayerLvl(3,7),
+                coins:randomStatsByPlayerLvl(4,8),
+                potions:randomStatsByPlayerLvl(0,1),
                 imgSrc:Math.random(),
-                exp:generateRandomIntegerInRange(20,25),
+                exp:randomStatsByPlayerLvl(20,25),
                 enemyCount:enemy.enemyCount +1
             })
             break;
             case 4:
-            hpAndHpMax = generateRandomIntegerInRange(50,80)
+            hpAndHpMax = randomStatsByPlayerLvl(50,80)
             setEnemy({
-                enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,enemyNames.first.length)]} ${enemyNames.second[generateRandomIntegerInRange(1,enemyNames.second.length)]}`,
+                enemyName:randomNames(),               
                 hp:hpAndHpMax,
                 hpMax:hpAndHpMax,
-                dmg:generateRandomIntegerInRange(4,8),
-                coins:generateRandomIntegerInRange(6,10),
-                potions:generateRandomIntegerInRange(0,1),
+                dmg:randomStatsByPlayerLvl(4,8),
+                coins:randomStatsByPlayerLvl(6,10),
+                potions:randomStatsByPlayerLvl(0,1),
                 imgSrc:Math.random(),
-                exp:generateRandomIntegerInRange(25,40),
+                exp:randomStatsByPlayerLvl(25,40),
                 enemyCount:enemy.enemyCount +1
             })
             break;
         }
         return
     }
-    const usePotion=()=>{
+    const heal=(hp)=>{
         if (player.potions >0) {
-            if((player.hp + 30) > player.hpMax){
+            if((player.hp + hp) > player.hpMax){
                 return setPlayer({
                     ...player,
                     hp:player.hpMax,
@@ -163,7 +180,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
             }
             setPlayer({
                 ...player,
-                hp:(player.hp +30),
+                hp:(player.hp +hp),
                 potions:(player.potions -1)
             })
             return
@@ -174,7 +191,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
     return (
     <div className='background'>
         <div className="mainView">
-            <Player player={player}/>
+            {/* <Player player={player}/> */}
             {toggleEnemy?(<Enemy enemy={enemy}/>):(null)}
         </div>
         <div className='buttonsContainer'>
@@ -183,7 +200,7 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
                 <span className='tooltip'>Attack enemy</span>
             </div>
             <div className="iconContainer">
-                <img className='icons' onClick={usePotion} src="/assets/stats/heal.svg" alt="use potion" />
+                <img className='icons' onClick={()=>{heal(30)}} src="/assets/stats/heal.svg" alt="use potion" />
                 <span className='tooltip'>Use potion</span>
             </div>
             <div className="iconContainer">
@@ -196,7 +213,6 @@ export const Dungeon = ({player,setPlayer,enemy,setEnemy,toggleEnemy,settoggleEn
                 }} src="/assets/hero.svg" alt="Search for enemy" />
                 <span className='tooltip'>Search for enemy</span>
             </div>
-
         </div>
     </div>
   )

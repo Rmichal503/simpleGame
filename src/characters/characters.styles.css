@@ -18,7 +18,7 @@ p{
     align-items: center;
     justify-content: center;
 }
-.stats{
+/* .enemyStats{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -26,7 +26,7 @@ p{
     background-color: gray;
     padding: 0.2rem;
     border-radius: 0.5rem;
-}
+} */
 .statsIcon{
     width: 30px;
     height: auto;
@@ -64,10 +64,15 @@ p{
     padding: 2px;
     width: 50%;
 }
-.name{
-    position: absolute;
-    top: 3rem;
-    left:1rem;
+.armor{
+    background-color: rgb(108, 100, 100);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+    padding: 2px;
+    width: 50%;
 }
 .enemyImg, .heroImg{
     width: auto;
