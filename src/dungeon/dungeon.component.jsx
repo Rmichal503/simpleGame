@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import { Enemy } from '../characters/enemy.component';
-import { Player } from '../characters/player.component';
 import './dungeon.styles.css'
 
 export const Dungeon = ({player,setPlayer,toggleEnemy,settoggleEnemy}) => {
@@ -14,7 +13,8 @@ export const Dungeon = ({player,setPlayer,toggleEnemy,settoggleEnemy}) => {
     const randomNames =()=>{
         return `${enemyNames.first[generateRandomIntegerInRange(0,(enemyNames.first.length-1))]} ${enemyNames.second[generateRandomIntegerInRange(0,(enemyNames.second.length-1))]}`
     }
-    const [enemy, setEnemy] = useState({
+    const [enemy, setEnemy] = useState(()=>
+        {return {
         enemyName:`${enemyNames.first[generateRandomIntegerInRange(0,(enemyNames.first.length-1))]} ${enemyNames.second[generateRandomIntegerInRange(0,(enemyNames.second.length-1))]}`,
         hp: 10,
         hpMax: 10,
@@ -23,7 +23,7 @@ export const Dungeon = ({player,setPlayer,toggleEnemy,settoggleEnemy}) => {
         potions: 0,
         exp: 5,
         imgSrc:'/assets/enemies/blob.svg',
-        enemyCount: 0,
+        enemyCount: 0,}
     });
     const randomStatsByPlayerLvl = (min,max)=>{
         return Math.floor(generateRandomIntegerInRange(min,max)* (1+(player.lvl/10)))

@@ -6,7 +6,8 @@ import { Outlet, Link, Routes, Route } from "react-router-dom";
 import { ProgressBar } from "./characters/progressBar/progressBar.component";
 
 function App() {
-  const [player, setPlayer] = useState({
+  const [player, setPlayer] = useState(()=>{
+    return {
     playerName: "Ziutek",
     hpMax: 100,
     hp: 100,
@@ -18,7 +19,7 @@ function App() {
     exp: 0,
     expToLvl: 100,
     lvl: 1,
-  });
+  }});
   const [toggleEnemy, settoggleEnemy] = useState(0);
   const [toggleEq, setToggleEq] = useState(0)
 

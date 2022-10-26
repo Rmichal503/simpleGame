@@ -11,22 +11,6 @@
     border-radius: 0.5rem;
     border: 1px solid black;
 }
-p{
-    width: 100px;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* .enemyStats{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    background-color: gray;
-    padding: 0.2rem;
-    border-radius: 0.5rem;
-} */
 .statsIcon{
     width: 30px;
     height: auto;

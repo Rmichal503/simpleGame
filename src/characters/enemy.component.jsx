@@ -1,5 +1,7 @@
 import React from 'react'
 import { ProgressBar } from './progressBar/progressBar.component'
+import './characters.styles.css'
+
 
 export const Enemy = ({enemy}) => {
   
