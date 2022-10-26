@@ -1,58 +1,58 @@
-.icons{
-    margin:0.5rem;
-    padding: 0.5rem;
-    height: 70px;
-    width: auto;
-    border: 2px solid black;
-    cursor: pointer;
-    transition: all 0.6s ease-in-out;
-    background-color: rgb(85, 85, 240);
+.icons {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  height: 70px;
+  width: auto;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: all 0.6s ease-in-out;
+  background-color: rgb(85, 85, 240);
 }
-.icons:hover{
-    transform: scale(1.1);
+.icons:hover {
+  transform: scale(1.1);
 }
-.icons:hover + .tooltip{
-    visibility: visible;
+.icons:hover + .tooltip {
+  visibility: visible;
 }
-.icons:active{
-    background-color: rgb(83, 17, 67);
+.icons:active {
+  background-color: rgb(83, 17, 67);
 }
-.shopBackground{
-    width: 100%;
-    height: 100%;
-    background-image: url('/assets/backgrounds/shop.svg');
-    background-color: rgb(67, 61, 61);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.shopBackground {
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/backgrounds/shop.svg");
+  background-color: rgb(67, 61, 61);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.stall{
-    width: 100%;
-    height: fit-content;
-    max-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
+.stall {
+  width: 100%;
+  height: fit-content;
+  max-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.tooltip{
-    top: 100%;
-    left: 20%;
-    z-index: 99;
-    position: absolute;
-    visibility: hidden;
-    background-color: wheat;
-    border-radius: 0.5rem;
-    padding: 3px;
-    border: 1px solid black;
-    width: fit-content;
+.tooltip {
+  top: 100%;
+  left: 20%;
+  z-index: 99;
+  position: absolute;
+  visibility: hidden;
+  background-color: wheat;
+  border-radius: 0.5rem;
+  padding: 3px;
+  border: 1px solid black;
+  width: fit-content;
 }
-.iconContainer{
-    position: relative;
-    height: fit-content;
+.iconContainer {
+  position: relative;
+  height: fit-content;
 }
-.iconContainer:visited{
-    color: inherit;
-    text-decoration: none;
+.iconContainer:visited {
+  color: inherit;
+  text-decoration: none;
 }
-.bought{
-    display: none;
+.bought {
+  display: none;
 }

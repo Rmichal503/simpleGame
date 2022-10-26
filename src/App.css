@@ -1,31 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-*{
-  font-family: 'Press Start 2P', cursive;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+  font-family: "Press Start 2P", cursive;
 }
-.App{
+.App {
   text-align: center;
   width: 100vw;
   height: 100vh;
 }
-.mainView{
+.mainView {
   display: flex;
   justify-content: space-around;
 }
-.nav{
+.nav {
   background-color: #433d3d;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-around;
 }
-.links{
+.links {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
-.town{
+.town {
   height: calc(100% - 107px);
   display: block;
-  background-image: url('/assets/backgrounds/village-background.svg');
+  background-image: url("/assets/backgrounds/village-background.svg");
   background-color: rgb(67, 61, 61);
   background-repeat: no-repeat;
   background-size: contain;
@@ -37,13 +36,13 @@
   cursor: pointer;
   transition: color 0.4s ease-in-out;
 }
-.playerStats:hover{
-  color:gold
+.playerStats:hover {
+  color: gold;
 }
-.eq{
-  width:30%;
+.eq {
+  width: 30%;
 }
-.eqMenu{
+.eqMenu {
   position: absolute;
   width: 300px;
   height: 300px;
@@ -59,7 +58,7 @@
   padding: 0.2rem;
   z-index: 10;
 }
-.stats{
+.stats {
   position: absolute;
   top: 7rem;
   width: 300px;
@@ -74,7 +73,7 @@
   padding: 0.2rem;
   z-index: 10;
 }
-.playerStats:hover +.stats{
+.playerStats:hover + .stats {
   display: block;
   opacity: 1;
 }

@@ -1,0 +1,12 @@
+.itemContainer{
+    width: 100px;
+    height: 2rem;
+    display: flex;
+}
+.itemIcon{
+    height: 20px;
+    width: auto;
+}
+.itemName{
+    font-size: 0.6rem;
+}
