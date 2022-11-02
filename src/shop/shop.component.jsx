@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sword, Shield } from "../items/items";
+import { Sword, Shield } from "../helpers/items";
 import "./shop.styles.css";
 
 function generateRandomIntegerInRange(min, max) {

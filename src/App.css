@@ -77,3 +77,46 @@
   display: block;
   opacity: 1;
 }
+.wall:before {
+  content: " ";
+}
+
+.tunnel:before {
+  content: " ";
+}
+
+.wall {
+  background: #636363;
+  /* border: 1px solid black; */
+  padding:0;
+  background-image: url('/assets/backgrounds/brick-wall.svg');
+  background-size: contain;
+  background-repeat: repeat;
+}
+
+.tunnel {
+  background: transparent;
+  /* border: 1px solid black; */
+  padding:0;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.moob{
+  padding:0;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url('/assets/enemies/skeleton.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.map{
+  border: 1px solid black;
+  background-color: #433d3d;
+}

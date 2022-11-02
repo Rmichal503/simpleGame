@@ -5,6 +5,7 @@ import { Dungeon } from "./dungeon/dungeon.component";
 import { Outlet, Link, Routes, Route } from "react-router-dom";
 import { ProgressBar } from "./enemy/progressBar/progressBar.component";
 import { Item } from "./items/item.component";
+import { DungeoneMap } from "./dungeon/DungeoneMap.component";
 
 function App() {
   const [player, setPlayer] = useState(() => {
@@ -95,6 +96,19 @@ function App() {
             />
             <span className="tooltip">Go to dungeon</span>
           </Link>
+          <Link
+            className="iconContainer"
+            to={"map"}
+            style={toggleEnemy ? { pointerEvents: "none" } : null}
+          >
+            <img
+              className="icons"
+              src="/assets/locations/dungeon-gate.svg"
+              alt="map"
+              style={toggleEnemy ? { backgroundColor: "red" } : null}
+            />
+            <span className="tooltip">Go to map</span>
+          </Link>
           <Link to="/" className="iconContainer">
             <img
               className="icons"
@@ -137,9 +151,9 @@ function App() {
                 />
                 <span>{player.coins}</span>
               </div>
-              {eq.map(el=>{
+              {eq.map((el,index)=>{
                 return(
-                  <Item name={el.name} effect={el.effect} type={el.type} cost={el.cost} setPlayer={setPlayer}/>
+                  <Item key={index} name={el.name} effect={el.effect} type={el.type} cost={el.cost} setPlayer={setPlayer}/>
                 )
               })}
             </div>
@@ -153,6 +167,12 @@ function App() {
             path="shop"
             element={
               <Shop setPlayer={setPlayer} player={player} setEq={setEq} />
+            }
+          />
+          <Route
+            path="map"
+            element={
+              <DungeoneMap/>
             }
           />
           <Route
